@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Mojtaba Ahmadi"/>
+    <meta name="generator" content="Hugo 0.88.1" />
+    <title>transaction checker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body class="container-fluid">
+    <main class="form-signin text-center">
+        <form method="post" action="/sendhash">
+            <br><br><br>
+            <h2 class="h3 mb-3 fw-normal text-primary">please insert transaction hash</h2>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm12 ">
+                <input type="text" name="hash" class="form-control text-center" required placeholder="insert hash here ..."/>
+            </div>
+            <hr>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm12 ">
+              <div class="form-group text-center">
+                <label for="sel1">select transaction network :</label>
+                <select class="form-control" name="type" id="sel1">
+                  <option value="bsc">Binance (Bsc SCAN)</option>
+                  <option value="ether">Etherum (Erher SCAN)</option>
+                  <option value="trx">Tron (Tron SCAN)</option>
+                  <option value="omni">Omni (Omni Explorer)</option>
+                  <option value="algo">Algo (Algo Explorer)</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <button class="w-80 btn btn-outline-primary" type="submit">check hash</button>
+            
+            <% if (status == "UnConfirmed") { %>
+              <hr>
+              <h2 class="text-danger"><%= status %></h2>
+            <% } %>
+
+            <% if (status == "Confirmed") { %>
+              <hr>
+              <h2 class="text-success"><%= status %></h2>
+            <% } %>
+      </form>
+    </main>
+  </body>
+</html>
